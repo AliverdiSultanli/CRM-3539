@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('home');
+
+Route::resource('categories', CategoryController::class)->except(['show', 'destroy']);
+Route::post('delete-category', [CategoryController::class, 'destroy'])->name('delete_category');
+
+Route::resource('shops', ShopController::class)->except(['show', 'destroy']);
+Route::post('delete-shop', [ShopController::class, 'destroy'])->name('delete_shop');
