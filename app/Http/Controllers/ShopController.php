@@ -23,7 +23,7 @@ class ShopController extends Controller
     public function index(): View|Factory|Application
     {
         $shops = Shop::with('categories');
-        
+
         if (request()->has('categories')){
             $filter = request()->categories;
             $shops->whereHas('categories', function($query) use($filter){
