@@ -2,7 +2,7 @@
 
 ## Tech Stach
 
-**Server:** Apache, also I can use Nginix;
+**Server:** Apache, also I can use Nginx;
 
 **Programming Language:** PHP 8.0 , Laravel 9;
 
