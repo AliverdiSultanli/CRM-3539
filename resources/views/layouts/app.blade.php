@@ -24,6 +24,11 @@
     <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.min.js') }}"></script>
     <script src="{{ asset('js/main.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#multiselect').multiselect();
+        });
+    </script>
     @yield('scripts')
 </body>
 </html>

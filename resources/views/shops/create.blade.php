@@ -29,11 +29,3 @@
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 @endsection
-
-@section('scripts')
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $('#multiselect').multiselect();
-        });
-    </script>
-@endsection

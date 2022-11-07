@@ -12,6 +12,29 @@
             {{ Session::get('success') }}
         </div>
     @endif
+    <form action="{{ route('shops.index') }}" method="GET">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <label for="multiselect">Filter</label>
+                    <div class="form-group w-100">
+                        <select id="multiselect" name="categories[]" multiple="multiple">
+                            @foreach($categories as $category)
+                                <option {{ (in_array($category->id, request()->categories) ? "selected":"") }} value="{{ $category->id }}">
+                                    {{ $category->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="form-group w-100">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
     <table class="table">
         <thead class="thead-dark">
         <tr>
@@ -120,5 +143,42 @@
                     });
             });
         });
+
+        {{--$(document).ready ( function () {--}}
+        {{--    let categories = [];--}}
+        {{--    $("#multiselect").change(function () {--}}
+        {{--        let selectedValue = $(this).val();--}}
+
+        {{--        $.ajax({--}}
+        {{--            url: "{{ route('shops.index') }}",--}}
+        {{--            type: 'GET',--}}
+        {{--            data: {--}}
+        {{--                categories: selectedValue.toString(),--}}
+        {{--            },--}}
+        {{--            success: function( data ){--}}
+        {{--                let response = data.response;--}}
+        {{--                if(response.code === 200){--}}
+        {{--                    Swal.fire(--}}
+        {{--                        'Success!',--}}
+        {{--                        response.message,--}}
+        {{--                        'success'--}}
+        {{--                    );--}}
+        {{--                    trToRemove.remove();--}}
+        {{--                }--}}
+        {{--                else if(response.code === 500){--}}
+        {{--                    Swal.fire({--}}
+        {{--                        icon: 'error',--}}
+        {{--                        title: 'Oops...',--}}
+        {{--                        text: 'Something went wrong!',--}}
+        {{--                        footer: '<a href>Server Error!</a>'--}}
+        {{--                    });--}}
+        {{--                }--}}
+        {{--            },--}}
+        {{--            error : (error) => {--}}
+        {{--                console.log(error);--}}
+        {{--            }--}}
+        {{--        });--}}
+        {{--    });--}}
+        {{--});--}}
     </script>
 @endsection

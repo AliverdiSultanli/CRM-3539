@@ -22,9 +22,20 @@ class ShopController extends Controller
      */
     public function index(): View|Factory|Application
     {
-        $shops = Shop::with('categories')->paginate(5);
+        $shops = Shop::with('categories');
+        
+        if (request()->has('categories')){
+            $filter = request()->categories;
+            $shops->whereHas('categories', function($query) use($filter){
+                $query->whereIn('category_id',$filter);
+            });
+        }
 
-        return view('shops.index', compact('shops'));
+        $categories = Category::all();
+
+        $shops = $shops->paginate(5);
+
+        return view('shops.index', compact('shops', 'categories'));
     }
 
     /**
