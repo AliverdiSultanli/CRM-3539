@@ -8,6 +8,11 @@
 
 **Database:** MySQL, also I can use MongoDB;
 
+## Composer installation 
+```javascript
+  composer install
+```
+
 ## Environment configuration 
 ```javascript
   cp .env.example .env
